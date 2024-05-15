@@ -5,7 +5,10 @@ import { Cart, CartItem } from '../models';
  * @returns {number}
  */
 export function calculateCartTotal(cart: Cart): number {
-  return cart ? cart.items.reduce((acc: number, { product: { price }, count }: CartItem) => {
-    return acc += price * count;
+  const min: number = 10;
+  const max: number = 40;
+  return cart ? cart.items?.reduce((acc: number, { product: { price }, count }: CartItem) => {
+    const randomPrice = Math.floor(Math.random() * (max - min + 1)) + min;
+    return acc += randomPrice * count;
   }, 0) : 0;
 }

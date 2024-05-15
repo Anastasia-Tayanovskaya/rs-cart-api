@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { v4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import { User } from '../models';
 
@@ -17,7 +17,7 @@ export class UsersService {
   }
 
   createOne({ name, password }: User): User {
-    const id = v4(v4());
+    const id = uuidv4();
     const newUser = { id: name || id, name, password };
 
     this.users[ id ] = newUser;
